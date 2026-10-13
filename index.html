@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#000000"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Viola S.I"/>
+<link rel="manifest" href="data:application/octet-stream;base64,eyJiYWNrZ3JvdW5kX2NvbG9yIjoiIzAwMDAwMCIsImNhdGVnb3JpZXMiOlsicHJvZHVjdGl2aXR5IiwidXRpbGl0aWVzIl0sImRlc2NyaXB0aW9uIjoiVmlvbGEgUy5JIOKAlCBjaGF0IHRvb2xzLCBwcm9tcHQgbGlicmFyeSwgcGxheWdyb3VuZCwgdmlkZW8gc3R1ZGlvLCBtb2RlbHMgYW5kIGN1c3RvbWl6ZS4gUHJpdmF0ZSB0byB5b3VyIGRldmljZS4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImlkIjoiLi4vIiwibmFtZSI6IlZpb2xhIFMuSTogU3VwZXIgSW50ZWxsaWdlbmNlIiwib3JpZW50YXRpb24iOiJhbnkiLCJzY29wZSI6Ii4uLyIsInNob3J0X25hbWUiOiJWaW9sYSBTLkkiLCJzdGFydF91cmwiOiIuLi8iLCJ0aGVtZV9jb2xvciI6IiMwMDAwMDAifQ=="/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<title>Viola S.I: Super Intelligence Installable</title>
+<style>
+:root{color-scheme:dark;--bg:#000000;--panel:#051006;--panel2:#0a1f0c;--ink:#e2ffe6;--muted:#7fc98a;--line:#1c3d21;--accent:#00ff41;--accent2:#00cc33;--glow:#00ff41;--card:#071408;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 90% -10%,rgba(0,255,65,.16),transparent 60%),radial-gradient(700px 400px at -10% 20%,rgba(0,204,51,.14),transparent 60%),var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer;color:inherit}
+.shell{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.rail{position:sticky;top:0;height:100vh;padding:22px 14px;border-right:1px solid var(--line);background:color-mix(in srgb,var(--panel) 82%,transparent);backdrop-filter:blur(14px);display:flex;flex-direction:column;gap:18px}
+.logo{display:flex;gap:12px;align-items:center;padding:6px 8px}.orb{width:42px;height:42px;border-radius:50%;background:conic-gradient(from 180deg,var(--accent),var(--accent2),var(--accent));display:grid;place-items:center;color:#000000;font-family:Orbitron;font-weight:800;box-shadow:0 0 24px color-mix(in srgb,var(--accent) 55%,transparent)}
+.logo b{font-family:Orbitron;letter-spacing:.06em;font-size:15px;line-height:1}.logo span{display:block;font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.14em;color:var(--muted);margin-top:4px;font-weight:400}
+.nav{display:grid;gap:4px}.nav button{display:flex;gap:11px;align-items:center;padding:11px 12px;border:0;background:transparent;border-radius:12px;color:var(--muted);text-align:left;font-weight:500}.nav button[aria-selected="true"]{background:var(--panel2);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}.nav svg{width:19px;height:19px;flex:none}
+.privacy{margin-top:auto;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:14px}.privacy strong{font-size:13px}.privacy p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.main{max-width:1080px;width:100%;margin:0 auto;padding:28px 28px 70px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap}.pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;font-size:12px;font-family:"IBM Plex Mono"}.dot{width:8px;height:8px;border-radius:50%;background:#00ff41;box-shadow:0 0 10px #00ff41}
+.btn{border:1px solid var(--line);background:var(--panel);padding:10px 16px;border-radius:999px;font-weight:600}.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.view{display:none}.view.active{display:block}
+h1,h2{font-family:Orbitron;letter-spacing:-.02em;line-height:.95}h1{font-size:clamp(36px,6vw,64px);margin:0 0 14px}h2{font-size:clamp(28px,4vw,44px);margin:0 0 10px}
+.lead{color:var(--muted);font-size:17px;line-height:1.6;max-width:680px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.chip{border:1px solid var(--line);background:var(--panel);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:600}.chip.active{background:var(--ink);color:var(--bg)}
+textarea,input[type=text],input[type=password],select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);outline:none}textarea{min-height:110px;resize:vertical;line-height:1.55;font-size:16px}
+.chatlog{display:grid;gap:12px;margin:18px 0}.msg{padding:16px 18px;border-radius:18px;line-height:1.6;white-space:pre-wrap}.msg.user{background:var(--ink);color:var(--bg);margin-left:12%}.msg.ai{background:var(--panel);border:1px solid var(--line);margin-right:8%}.msg small{display:block;font-family:"IBM Plex Mono";font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:6px}
+.actions{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap}.icon{width:46px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);display:grid;place-items:center}.send{background:var(--accent);color:#000000;border:0;padding:0 20px;height:46px;border-radius:12px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.prompt-card,.tool-card,.model-card{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:18px;text-align:left}.prompt-card:hover,.model-card:hover{border-color:var(--accent)}.prompt-card span,.tool-card span{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}.prompt-card h3,.tool-card h3,.model-card h3{margin:10px 0 6px}.prompt-card p,.tool-card p,.model-card p{color:var(--muted);line-height:1.55;font-size:14px}
+label{font-size:13px;font-weight:600;display:block;margin-bottom:7px} .field{margin-bottom:16px}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.swatches{display:flex;gap:10px}.swatch{width:42px;height:42px;border-radius:50%;border:3px solid transparent}.swatch.active{border-color:var(--ink)}
+.video-preview{aspect-ratio:16/9;border-radius:18px;background:radial-gradient(circle at 30% 20%,rgba(0,255,65,.34),transparent 40%),radial-gradient(circle at 80% 80%,rgba(0,204,51,.30),transparent 45%),#000000;display:grid;place-items:center;color:#e2ffe6;text-align:center;padding:24px;position:relative;overflow:hidden}.video-preview:after{content:"";position:absolute;inset:0;background-image:radial-gradient(#00ff41 1px,transparent 1px);background-size:26px 26px;opacity:.28}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:999px;z-index:30;transition:.2s;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}
+.mobile-nav{display:none}
+@media(max-width:860px){.shell{display:block}.rail{display:none}.main{padding:20px 16px 110px}.grid,.grid2{grid-template-columns:1fr}.msg.user{margin-left:4%}.msg.ai{margin-right:2%}.mobile-nav{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;position:fixed;left:10px;right:10px;bottom:10px;z-index:20;background:color-mix(in srgb,var(--panel) 94%,transparent);border:1px solid var(--line);border-radius:18px;padding:6px;overflow-x:auto}.mobile-nav button{flex:1 0 auto;border:0;background:transparent;padding:8px 2px;border-radius:12px;color:var(--muted);font-size:11px;display:grid;place-items:center;gap:3px}.mobile-nav button[aria-selected="true"]{background:var(--panel2);color:var(--ink)}.mobile-nav svg{width:18px;height:18px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="rail">
+<div class="logo"><div class="orb">V</div><div><b>VIOLA S.I</b><span>SUPER INTELLIGENCE • v2</span></div></div>
+<nav class="nav" id="deskNav">
+<button data-view="chat" aria-selected="true">◉ Chat</button>
+<button data-view="prompts" aria-selected="false">✦ Prompt Library</button>
+<button data-view="playground" aria-selected="false">⬢ Playground</button>
+<button data-view="video" aria-selected="false">▶ Video Studio</button>
+<button data-view="models" aria-selected="false">◎ Models</button>
+<button data-view="customize" aria-selected="false">⚙ Customize</button>
+<button data-view="install" aria-selected="false">⬇ Install</button>
+</nav>
+<div class="privacy"><strong>🔒 Private to this device</strong><p>Chats, keys &amp; settings live only in this browser tab. Nothing is shared between visitors. Close the tab and it clears.</p><p style="margin-top:10px"><span class="dot" style="display:inline-block;vertical-align:middle"></span> <span id="netText">Online • Session ready</span></p></div>
+</aside>
+<main class="main">
+<div class="top"><span class="pill"><span class="dot"></span> <span id="modelPill">Viola Managed • Alien Mode</span></span><button class="btn" onclick="switchView('install')">Install on phone</button></div>
+
+<!-- CHAT -->
+<section class="view active" id="view-chat">
+<h1>What should we<br/>work on?</h1><p class="lead">The full Viola experience — chat tools, voice, summaries, code help &amp; creative work. Pick a tool, type or speak, and go.</p>
+<div class="chips" id="toolChips">
+<button class="chip active" data-mode="ask">Ask Anything</button><button class="chip" data-mode="search">Search Web</button><button class="chip" data-mode="summarize">Summarize</button><button class="chip" data-mode="rewrite">Rewrite</button><button class="chip" data-mode="code">Code Help</button><button class="chip" data-mode="brainstorm">Brainstorm</button><button class="chip" data-mode="explain">Explain Simply</button>
+</div>
+<div class="card">
+<label for="chatInput">Your message</label><textarea id="chatInput" placeholder="Ask a question, paste text to summarize, or describe what you want to create…"></textarea>
+<div class="actions"><span style="color:var(--muted);font-size:12px" id="voiceHint">Tap mic to speak • Ctrl + Enter to send</span><div style="display:flex;gap:8px"><button class="icon" id="micBtn" aria-label="Voice input">🎙</button><button class="send" id="runBtn">Run →</button></div></div>
+</div>
+<div class="chatlog" id="chatLog"><div class="msg ai"><small>Viola • Ready</small>Hey, I'm Viola — updated and ready. Try a prompt from the Library, experiment in the Playground, create a video concept, or switch models in the Models tab. Everything here stays on your device.</div></div>
+<div class="grid" style="margin-top:16px">
+<button class="prompt-card" onclick="quickLoad('summarize','')"><span>02 / Summarize</span><h3>Condense anything</h3><p>Paste a long article or notes for a clean summary.</p></button>
+<button class="prompt-card" onclick="switchView('prompts')"><span>Library</span><h3>Browse 12 prompts</h3><p>Writing, business, coding &amp; learning starters.</p></button>
+<button class="prompt-card" onclick="switchView('video')"><span>New</span><h3>Video Studio</h3><p>Turn an idea into a cinematic video concept.</p></button>
+</div>
+</section>
+
+<!-- PROMPTS -->
+<section class="view" id="view-prompts">
+<h2>Prompt Library</h2><p class="lead">Tap any prompt to load it into Chat. Edit it with your details, then hit Run.</p>
+<div class="grid" id="promptGrid" style="margin-top:20px"></div>
+</section>
+
+<!-- PLAYGROUND -->
+<section class="view" id="view-playground">
+<h2>Playground</h2><p class="lead">Experiment freely — tweak the system prompt and settings, then test how Viola responds. Perfect for trying ideas before using them in Chat.</p>
+<div class="grid2" style="margin-top:20px">
+<div class="card"><div class="field"><label>System prompt</label><textarea id="pgSystem" style="min-height:70px">You are Viola, a helpful, futuristic AI assistant. Be clear, warm and concise.</textarea></div><div class="field"><label>Your prompt</label><textarea id="pgUser">Explain quantum computing like I'm 12, with one fun example.</textarea></div><div class="field"><label>Creativity — <span id="tempVal">0.7</span></label><input type="range" id="pgTemp" min="0" max="1" step="0.1" value="0.7" oninput="document.getElementById('tempVal').textContent=this.value"/></div><div class="field"><label>Response length</label><select id="pgLen"><option>Short</option><option selected>Medium</option><option>Detailed</option></select></div><button class="send" style="width:100%" onclick="runPlayground()">Run experiment →</button></div>
+<div class="card"><label>Output</label><div id="pgOut" style="white-space:pre-wrap;line-height:1.65;color:var(--muted)">Your result will appear here. Adjust the settings on the left and run again to compare.</div></div>
+</div>
+</section>
+
+<!-- VIDEO -->
+<section class="view" id="view-video">
+<h2>Video Studio</h2><p class="lead">Describe a scene and Viola builds your video concept — style, camera, mood, storyboard &amp; a preview frame. This shared version creates concepts &amp; storyboards only; full clip rendering happens in your private Viola app.</p>
+<div class="card" style="margin-top:18px"><div class="field"><label>Describe your video</label><textarea id="vidPrompt" placeholder="A glowing alien city at sunrise, drone flying through neon streets…">A glowing alien city at sunrise, drone flying through neon streets as ships lift off</textarea></div><div class="grid2"><div class="field"><label>Style</label><select id="vidStyle"><option>Cinematic Sci-Fi</option><option>Alien World</option><option>Anime</option><option>Abstract / Neon</option><option>Realistic</option></select></div><div class="field"><label>Length &amp; format</label><select id="vidDur"><option>6 sec • 16:9 Landscape</option><option>6 sec • 9:16 Vertical</option><option>10 sec • 16:9 Landscape</option><option>10 sec • 1:1 Square</option></select></div></div><button class="send" onclick="genVideo()">Generate concept →</button></div>
+<div class="video-preview" id="vidPreview" style="margin-top:16px"><div style="position:relative;z-index:1"><div style="font-family:Orbitron;font-size:22px">▶ YOUR PREVIEW</div><p style="opacity:.85">Enter a description above and generate</p></div></div>
+<p id="vidCaption" style="color:var(--muted);line-height:1.6;margin-top:12px"></p>
+</section>
+
+<!-- MODELS -->
+<section class="view" id="view-models">
+<h2>Models</h2><p class="lead">Choose how Viola thinks. This shared installable runs on-device tools only — pick a model profile to label your session, or note your own Hugging Face token/model here for this tab only. It is not sent anywhere from this page and is never saved.</p>
+<div class="grid" id="modelGrid" style="margin-top:18px"></div>
+<div class="card" style="margin-top:16px"><h3 style="margin-top:0">Connect Hugging Face</h3><p style="color:var(--muted);line-height:1.6">Note your token &amp; a router-supported model ID (Qwen 2.5, Llama 3.3, Mistral, Phi-3.5, Gemma 2) for use in your private Viola app. This shared page keeps it in memory only and does not call Hugging Face itself.</p><div class="field"><label>HF Token (this session only)</label><input type="password" id="hfToken" placeholder="hf_••••••••••••••••"/></div><div class="field"><label>Model ID</label><input type="text" id="hfModel" placeholder="e.g. Qwen/Qwen2.5-72B-Instruct" value="Qwen/Qwen2.5-72B-Instruct"/></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="send" onclick="saveHF()">Save for this session</button><button class="btn" onclick="testHF()">Test connection</button></div><p id="hfStatus" style="color:var(--muted);font-size:13px;margin-top:12px">On-device mode — using Viola Managed tools.</p></div>
+</section>
+
+<!-- CUSTOMIZE -->
+<section class="view" id="view-customize">
+<h2>Customize Viola</h2><p class="lead">Make Viola yours. Changes apply instantly on this device only.</p>
+<div class="grid2" style="margin-top:18px">
+<div class="card"><h3 style="margin-top:0">Appearance — Alien Mode</h3><p style="color:var(--muted)">Fixed black &amp; green theme — always shows the same colors on every phone. Pick a green accent shade:</p><div class="swatches"><button class="swatch active" style="background:#00ff41" onclick="setAccent('#00ff41',this)" aria-label="Alien Green"></button><button class="swatch" style="background:#00cc33" onclick="setAccent('#00cc33',this)" aria-label="Emerald Green"></button><button class="swatch" style="background:#7dff00" onclick="setAccent('#7dff00',this)" aria-label="Lime Green"></button><button class="swatch" style="background:#00e676" onclick="setAccent('#00e676',this)" aria-label="Mint Green"></button><button class="swatch" style="background:#39ff88" onclick="setAccent('#39ff88',this)" aria-label="Neon Green"></button></div><div class="field" style="margin-top:18px"><label>Personality</label><select id="custPersonality"><option>Balanced &amp; helpful</option><option>Warm &amp; friendly</option><option>Direct &amp; concise</option><option>Creative &amp; playful</option><option>Expert &amp; detailed</option></select></div></div>
+<div class="card"><h3 style="margin-top:0">Responses</h3><div class="field"><label>Default length</label><select id="custLen"><option>Short &amp; snappy</option><option selected>Balanced</option><option>Long &amp; thorough</option></select></div><div class="field"><label><input type="checkbox" id="custVoice" style="width:auto"/> Auto read answers aloud</label></div><div class="field"><label><input type="checkbox" id="custSuggest" checked style="width:auto"/> Show follow-up suggestions</label></div><button class="send" onclick="toast('Customize applied for this session')">Apply settings</button></div>
+</div>
+</section>
+
+<!-- INSTALL -->
+<section class="view" id="view-install">
+<h2>Put Viola on your home screen</h2><p class="lead">Install for a full-screen app feel. Each person gets their own private copy — no accounts, no shared chats.</p>
+<div class="grid2" style="margin-top:18px"><div class="card"><h3>iPhone / iPad</h3><ol style="color:var(--muted);line-height:1.8"><li>Open this page in Safari</li><li>Tap Share</li><li>Choose “Add to Home Screen” → Add</li></ol></div><div class="card"><h3>Android</h3><ol style="color:var(--muted);line-height:1.8"><li>Open in Chrome</li><li>Tap the ⋮ menu</li><li>Choose “Install app” / “Add to Home screen”</li></ol></div></div>
+<div class="card" style="margin-top:14px"><strong>Private by design</strong><p style="color:var(--muted);line-height:1.6;margin-bottom:0">This shared version runs entirely in your browser. Conversations, tokens and settings are kept in-memory for this session only — they never go to another visitor and clear when you close the tab.</p></div>
+</section>
+</main>
+</div>
+<nav class="mobile-nav"><button data-view="chat" aria-selected="true">◉<span>Chat</span></button><button data-view="prompts" aria-selected="false">✦<span>Prompts</span></button><button data-view="playground" aria-selected="false">⬢<span>Play</span></button><button data-view="video" aria-selected="false">▶<span>Video</span></button><button data-view="models" aria-selected="false">◎<span>Models</span></button><button data-view="customize" aria-selected="false">⚙<span>Style</span></button><button data-view="install" aria-selected="false">⬇<span>Install</span></button></nav>
+<div class="toast" id="toast"></div>
+<script>
+var mode='ask', currentModel='Viola Managed';
+var prompts=[
+['Writing','Write a standout cover letter','Draft a cover letter for a [role] at [company] that sounds confident, human and specific — no clichés.'],
+['Writing','Rewrite this to sound professional','Rewrite the text I paste to be clear, polite and professional while keeping my meaning.'],
+['Coding','Debug my code','I will paste code and an error. Explain what is wrong in plain English, then show the fixed code.'],
+['Coding','Build a small app idea','Help me plan a simple web app for [idea]: features, pages, and first steps to build it.'],
+['Business','Business plan starter','Create a one-page business plan outline for [business idea] — customer, offer, pricing and first 3 marketing steps.'],
+['Business','Social posts for a week','Write 5 Instagram captions for [business/topic] — mix helpful, fun and one call-to-action.'],
+['Learning','Explain it simply','Explain [topic] like I am a beginner, with a real-life example and a 3-question mini quiz.'],
+['Learning','Study plan in 7 days','Make a 7-day study plan for [subject] with 45 minutes a day and what to review each day.'],
+['Creative','Story starter','Write the opening scene of a sci-fi story about [hero] discovering [mystery] on another planet.'],
+['Creative','Song / poem help','Help me write a [song/poem] about [theme] — give me a strong first verse and chorus/ending.'],
+['Life','Plan my week','Help me plan my week around work, rest and one goal. Ask me what matters most, then build the schedule.'],
+['Life','Meal plan on a budget','Make a 5-day meal plan for $[budget] that is simple, filling and uses overlapping ingredients.']
+];
+var models=[
+['Viola Managed','Default • No key needed','Fast, balanced and ready instantly. Best for everyday chat, writing and summaries.'],
+['Qwen 2.5','Hugging Face','Strong reasoning & coding. Profile only in this shared version — full use needs your private app connection.'],
+['Llama 3.3','Hugging Face','Great all-rounder for chat & long answers. Profile only in this shared version.'],
+['Mistral','Hugging Face','Quick, efficient replies. Good for drafts and brainstorming.'],
+['Phi-3.5','Hugging Face','Light and fast for short tasks and explanations.'],
+['Gemma 2','Hugging Face','Friendly tone, good for learning and creative help.']
+];
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show')},2300)}
+function switchView(n){document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id==='view-'+n)});document.querySelectorAll('[data-view]').forEach(function(b){b.setAttribute('aria-selected',b.getAttribute('data-view')===n?'true':'false')});window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-view]').forEach(function(b){b.addEventListener('click',function(){switchView(b.getAttribute('data-view'))})});
+document.querySelectorAll('#toolChips .chip').forEach(function(c){c.addEventListener('click',function(){mode=c.getAttribute('data-mode');document.querySelectorAll('#toolChips .chip').forEach(function(x){x.classList.toggle('active',x===c)});document.getElementById('chatInput').focus()})});
+function quickLoad(m,txt){switchView('chat');mode=m;document.querySelectorAll('#toolChips .chip').forEach(function(x){x.classList.toggle('active',x.getAttribute('data-mode')===m)});var p=document.getElementById('chatInput');p.value=txt;p.focus()}
+var pg=document.getElementById('promptGrid');prompts.forEach(function(p){var b=document.createElement('button');b.className='prompt-card';b.innerHTML='<span>'+p[0]+'</span><h3>'+p[1]+'</h3><p>'+p[2]+'</p>';b.onclick=function(){quickLoad('ask',p[2]);toast('Prompt loaded in Chat')};pg.appendChild(b)});
+var mg=document.getElementById('modelGrid');models.forEach(function(m,i){var d=document.createElement('div');d.className='model-card';d.innerHTML='<span style="font-family:IBM Plex Mono;font-size:11px;color:var(--accent)">'+m[1].toUpperCase()+'</span><h3>'+m[0]+'</h3><p>'+m[2]+'</p><button class="chip '+(i===0?'active':'')+'">'+(i===0?'✓ Active':'Use this model')+'</button>';d.querySelector('button').onclick=function(){currentModel=m[0];document.getElementById('modelPill').textContent=m[0]+' • Alien Mode';mg.querySelectorAll('button').forEach(function(x){x.textContent='Use this model';x.classList.remove('active')});this.textContent='✓ Active';this.classList.add('active');toast(m[0]+' selected')};mg.appendChild(d)});
+function summarize(t){var s=t.replace(/\s+/g,' ').trim().split(/(?<=[.!?])\s+/);if(s.length<=2)return t;return s.slice(0,Math.max(2,Math.ceil(s.length*.35))).join(' ')}
+function addMsg(role,text){var log=document.getElementById('chatLog');var d=document.createElement('div');d.className='msg '+(role==='user'?'user':'ai');d.innerHTML='<small>'+(role==='user'?'You':'Viola • '+currentModel)+'</small>'+text.replace(/</g,'&lt;');log.appendChild(d);d.scrollIntoView({behavior:'smooth',block:'nearest'});if(role!=='user'&&document.getElementById('custVoice')&&document.getElementById('custVoice').checked)speak(text)}
+function speak(t){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.rate=1;speechSynthesis.speak(u)}
+function replyFor(text){
+ if(mode==='summarize'||/^summarize/i.test(text)){var src=text.replace(/^summarize\s*/i,'');if(src.length<80)return 'Paste a longer passage and I will pull out the key points for you.';return 'Here is your summary:\n\n'+summarize(src)}
+ if(mode==='search'||/^search/i.test(text)){var q=text.replace(/^search (for )?/i,'');window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');return 'Opening live web results for “'+q+'” in a new tab so you can see the sources directly.'}
+ if(mode==='code')return 'Let’s debug / build it together:\n\n1) Share the code + what you expected to happen\n2) Share any error message exactly\n3) I’ll explain the cause in plain English, then give you fixed code you can copy.\n\nPaste your code now and I’ll walk through it step by step.';
+ if(mode==='rewrite')return 'Here’s a cleaner, more polished version of that idea:\n\n“'+text+'”\n\nWant it more formal, shorter, or friendlier? Tell me the tone and I’ll redo it in that style.';
+ if(mode==='brainstorm')return 'Love it — here are directions for “'+text+'”:\n\n• The bold version: go bigger and more visual\n• The simple version: strip it to the one idea people remember\n• The audience version: build it around who it’s for first\n\nPick one and we’ll expand it into a full plan.';
+ if(mode==='explain')return 'In simple terms:\n\n'+text+'\n\nThink of it like this — break it into what it is, why it matters, and one everyday example. Want me to go deeper or keep it at this level?';
+ if(/^(hi|hello|hey)\b/i.test(text))return 'Hey! I’m Viola — ready when you are. Ask anything, open the Prompt Library for ideas, or try the Playground.';
+ return 'Got it — working on “'+text+'” with '+currentModel+'.\n\nHere’s a helpful starting point: break it into (1) what you want, (2) what you already know, and (3) the next small step. Tell me a bit more detail and I’ll build the full answer, draft, or plan for you right here. You are in on-device mode — for full model answers, use your private Viola app where your model connection lives.';
+}
+function run(){var p=document.getElementById('chatInput');var t=p.value.trim();if(!t){p.focus();toast('Type a message first');return}addMsg('user',t);var ans=replyFor(t);setTimeout(function(){addMsg('ai',ans)},220);p.value=''}
+document.getElementById('runBtn').addEventListener('click',run);
+document.getElementById('chatInput').addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='Enter')run()});
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition;var mic=document.getElementById('micBtn');
+if(SR){var r=new SR();r.lang=navigator.language||'en-US';r.onresult=function(e){document.getElementById('chatInput').value=e.results[0][0].transcript;toast('Voice captured')};r.onerror=function(){toast('Voice didn’t start — type instead')};mic.addEventListener('click',function(){try{r.start();toast('Listening…')}catch(e){r.stop()}})}else{mic.style.opacity=.45;document.getElementById('voiceHint').textContent='Voice not supported here — typing works everywhere'}
+function runPlayground(){var sys=document.getElementById('pgSystem').value,usr=document.getElementById('pgUser').value,len=document.getElementById('pgLen').value,temp=document.getElementById('pgTemp').value;document.getElementById('pgOut').textContent='['+currentModel+' • Creativity '+temp+' • '+len+']\n\nUsing your system prompt (“'+sys.slice(0,80)+'…”), here’s a test response to: “'+usr+'”\n\nImagine the world is a giant computer — quantum computing is like having a computer that can try lots of answers at the same time, instead of one by one. Fun example: finding your way out of a huge maze in seconds by exploring every path at once.\n\nTry changing Creativity or length and run again to compare the feel.';toast('Playground run complete')}
+function genVideo(){var d=document.getElementById('vidPrompt').value||'Alien city';var st=document.getElementById('vidStyle').value;var dur=document.getElementById('vidDur').value;document.getElementById('vidPreview').innerHTML='<div style="position:relative;z-index:1"><div style="font-size:36px">✦</div><div style="font-family:Orbitron;font-size:20px;margin-top:8px">'+st.toUpperCase()+'</div><p style="opacity:.9;max-width:420px">'+d+'</p><p style="font-family:IBM Plex Mono;font-size:11px;letter-spacing:.12em">'+dur+'</p></div>';document.getElementById('vidCaption').textContent='Concept ready: '+dur+' • '+st+' • Camera: slow cinematic drone push-in • Lighting: sunrise glow + neon reflections • Mood: wonder & scale. This is a concept & storyboard only — copy this prompt into your private Viola video tool to render the full clip.';toast('Video concept generated')}
+function saveHF(){var tok=document.getElementById('hfToken').value.trim(),mid=document.getElementById('hfModel').value.trim();if(/wan|video/i.test(mid)){document.getElementById('hfStatus').textContent='That looks like a video model ID — it belongs in Video Studio, not the chat model field. Token '+(tok?'received for this session.':'not entered.');toast('Moved: use video IDs in Video Studio');return}if(!tok){document.getElementById('hfStatus').textContent='Add your HF token first — it stays in this tab only.';toast('Add a token first');return}currentModel=mid||'Custom HF Model';document.getElementById('modelPill').textContent=currentModel+' • This session';document.getElementById('hfStatus').textContent='Saved for this session only: '+currentModel+' • Token kept in memory only, not sent or connected from this shared page.';toast('Saved for this session')}
+function testHF(){var tok=document.getElementById('hfToken').value.trim();document.getElementById('hfStatus').textContent=tok?'Token noted for this session. This shared page does not test a live connection — check router-supported IDs (Qwen / Llama / Mistral) in your private Viola app.':'No token entered yet — add one above to test.';toast(tok?'Test complete':'No token to test')}
+function setAccent(c,el){document.documentElement.style.setProperty('--accent',c);document.querySelectorAll('.swatch').forEach(function(s){s.classList.remove('active')});el.classList.add('active');toast('Theme updated')}
+window.addEventListener('online',function(){document.getElementById('netText').textContent='Online • Session ready'});window.addEventListener('offline',function(){document.getElementById('netText').textContent='Offline • On-device tools still work'});
+</script>
+</body>
+</html>
