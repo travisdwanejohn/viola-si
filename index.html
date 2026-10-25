@@ -41,8 +41,8 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .swatches{display:flex;gap:10px}.swatch{width:42px;height:42px;border-radius:50%;border:3px solid transparent}.swatch.active{border-color:var(--ink)}
 .video-preview{aspect-ratio:16/9;border-radius:18px;background:radial-gradient(circle at 30% 20%,rgba(0,255,65,.34),transparent 40%),radial-gradient(circle at 80% 80%,rgba(0,204,51,.30),transparent 45%),#000000;display:grid;place-items:center;color:#e2ffe6;text-align:center;padding:24px;position:relative;overflow:hidden}.video-preview:after{content:"";position:absolute;inset:0;background-image:radial-gradient(#00ff41 1px,transparent 1px);background-size:26px 26px;opacity:.28}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:999px;z-index:30;transition:.2s;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}
-.mobile-nav{display:none}
-@media(max-width:860px){.shell{display:block}.rail{display:none}.main{padding:20px 16px 110px}.grid,.grid2{grid-template-columns:1fr}.msg.user{margin-left:4%}.msg.ai{margin-right:2%}.mobile-nav{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;position:fixed;left:10px;right:10px;bottom:10px;z-index:20;background:color-mix(in srgb,var(--panel) 94%,transparent);border:1px solid var(--line);border-radius:18px;padding:6px;overflow-x:auto}.mobile-nav button{flex:1 0 auto;border:0;background:transparent;padding:8px 2px;border-radius:12px;color:var(--muted);font-size:11px;display:grid;place-items:center;gap:3px}.mobile-nav button[aria-selected="true"]{background:var(--panel2);color:var(--ink)}.mobile-nav svg{width:18px;height:18px}}
+.chat-composer{position:sticky;bottom:12px;z-index:15}#chatInput{min-height:56px}.msg{scroll-margin-bottom:140px}.mobile-nav{display:none}
+@media(max-width:860px){.shell{display:block}.rail{display:none}.main{padding:20px 16px 110px}.grid,.grid2{grid-template-columns:1fr}.msg.user{margin-left:4%}.msg.ai{margin-right:2%}.mobile-nav{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;position:fixed;left:10px;right:10px;bottom:10px;z-index:20;background:color-mix(in srgb,var(--panel) 94%,transparent);border:1px solid var(--line);border-radius:18px;padding:6px;overflow-x:auto}.mobile-nav button{flex:1 0 auto;border:0;background:transparent;padding:8px 2px;border-radius:12px;color:var(--muted);font-size:11px;display:grid;place-items:center;gap:3px}.mobile-nav button[aria-selected="true"]{background:var(--panel2);color:var(--ink)}.mobile-nav svg{width:18px;height:18px}.chat-composer{bottom:84px}}
 </style>
 </head>
 <body>
@@ -69,15 +69,10 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 <div class="chips" id="toolChips">
 <button class="chip active" data-mode="ask">Ask Anything</button><button class="chip" data-mode="search">Search Web</button><button class="chip" data-mode="summarize">Summarize</button><button class="chip" data-mode="rewrite">Rewrite</button><button class="chip" data-mode="code">Code Help</button><button class="chip" data-mode="brainstorm">Brainstorm</button><button class="chip" data-mode="explain">Explain Simply</button>
 </div>
-<div class="card">
+<div class="chatlog" id="chatLog"><div class="msg ai"><small>Viola • Ready</small>Hey, I'm Viola — updated and ready. Try a prompt from the Library, experiment in the Playground, create a video concept, or switch models in the Models tab. Everything here stays on your device.</div></div>
+<div class="card chat-composer">
 <label for="chatInput">Your message</label><textarea id="chatInput" enterkeyhint="send" placeholder="Ask a question, paste text to summarize, or describe what you want to create…"></textarea>
 <div class="actions"><span style="color:var(--muted);font-size:12px" id="voiceHint">Tap mic to speak • Enter to send, Shift + Enter for a new line</span><div style="display:flex;gap:8px"><button class="icon" id="micBtn" aria-label="Voice input">🎙</button><button class="send" id="runBtn">Send ↑</button></div></div>
-</div>
-<div class="chatlog" id="chatLog"><div class="msg ai"><small>Viola • Ready</small>Hey, I'm Viola — updated and ready. Try a prompt from the Library, experiment in the Playground, create a video concept, or switch models in the Models tab. Everything here stays on your device.</div></div>
-<div class="grid" style="margin-top:16px">
-<button class="prompt-card" onclick="quickLoad('summarize','')"><span>02 / Summarize</span><h3>Condense anything</h3><p>Paste a long article or notes for a clean summary.</p></button>
-<button class="prompt-card" onclick="switchView('prompts')"><span>Library</span><h3>Browse 12 prompts</h3><p>Writing, business, coding &amp; learning starters.</p></button>
-<button class="prompt-card" onclick="switchView('video')"><span>New</span><h3>Video Studio</h3><p>Turn an idea into a cinematic video concept.</p></button>
 </div>
 </section>
 
